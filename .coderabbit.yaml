@@ -1,0 +1,80 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: en-US
+
+reviews:
+  profile: chill
+  request_changes_workflow: false
+  high_level_summary: false
+  high_level_summary_in_walkthrough: false
+  collapse_walkthrough: true
+  changed_files_summary: false
+  sequence_diagrams: false
+  related_issues: false
+  related_prs: false
+  suggested_labels: false
+  suggested_reviewers: false
+  in_progress_fortune: false
+  poem: false
+
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+    ignore_title_keywords:
+      - WIP
+      - "[skip review]"
+    ignore_usernames:
+      - dependabot[bot]
+      - renovate[bot]
+
+  path_filters:
+    # Lockfiles
+    - "!**/uv.lock"
+    - "!**/package-lock.json"
+    - "!**/pnpm-lock.yaml"
+    - "!**/yarn.lock"
+    - "!**/poetry.lock"
+    # Generated protobuf
+    - "!**/*_pb2.py"
+    - "!**/*_pb2_grpc.py"
+    # Vendored, build output, dependencies
+    - "!**/vendor/**"
+    - "!**/third_party/**"
+    - "!**/node_modules/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/.next/**"
+    - "!**/__pycache__/**"
+    - "!**/*.egg-info/**"
+    # Snapshots and fixtures
+    - "!**/__snapshots__/**"
+    - "!**/*.snap"
+    - "!tests/fixtures/**/*.json"
+    # Large data, dumps, backups, tmp
+    - "!**/*.csv"
+    - "!**/*.jsonl"
+    - "!**/*.parquet"
+    - "!**/*.dump"
+    - "!**/*.sql.gz"
+    - "!**/data/**"
+    - "!**/*.bak"
+    - "!**/*.orig"
+    - "!**/backups/**"
+    - "!**/tmp/**"
+    # Minified
+    - "!**/*.min.js"
+    - "!**/*.min.css"
+    - "!**/*.map"
+
+chat:
+  art: false
+
+knowledge_base:
+  opt_out: false
+  learnings:
+    scope: auto
+  issues:
+    scope: auto
+  pull_requests:
+    scope: auto
